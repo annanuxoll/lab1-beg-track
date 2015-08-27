@@ -45,8 +45,8 @@ function assert(expression, failureMessage) {
  That will help later when you run jscs.
 */
 
-assert(1 === 1, '1 equals 1 - this assert will pass.');
-assert(1 === 2, 'this is an example of a failing assertion. 1 does not equal 2.');
+/*assert(1 === 1, '1 equals 1 - this assert will pass.');
+assert(1 === 2, 'this is an example of a failing assertion. 1 does not equal 2.');*/
 
 /* ===========================================================================
 ------------------Assertions (8 points total)---------------------------------
@@ -58,8 +58,11 @@ assert(1 === 2, 'this is an example of a failing assertion. 1 does not equal 2.'
  zoo-themed.  Make one pass and one fail. In the failure message, describe why
  it failed.
 */
-
-//your code goes here
+var meerkatsFed = true;
+var elephantsFed = false;
+var habitatsClean = true;
+assert(meerkatsFed || elephantsFed, 'This will pass because meerkats_fed is true.');
+assert(elephantsFed && habitatsClean, 'This will fail because only one of the two expressions is true.');
 
 /* ========================================================================
 ----------------- Meerkats (20 points total)-------------------------------
@@ -79,13 +82,21 @@ var sentence2 = 'Come over here so you can scratch my belly.';
 
 // TODO: part #1: use a for loop to replace the words in sentence 1 with
 // 'chirp' (10 points)
-
-// your code goes here
+sentence1 = sentence1.split(' ');
+for (var word in sentence1) {
+  sentence1[word] = 'chirp';
+}
+sentence1 = sentence1.join(' ') + '.';
 
 // TODO: part #2: use a while or do-while loop to replace the words in sentence 2
 // with 'chirp' (10 points)
-
-// your code goes here
+sentence2 = sentence2.split(' ');
+var i = 0;
+while (i < sentence2.length) {
+  sentence2[i] = 'chirp';
+  i++;
+}
+sentence2 = sentence2.join(' ') + '.';
 
 // Leave these assertions as-is! If they pass, your code works.
 assert(sentence1 === 'chirp chirp chirp.', 'sentence 1 should have 3 chirps');
@@ -106,8 +117,8 @@ var nextAnimal;
 
 // TODO: 10 points
 // Assign one of your favorite animals to nextAnimal using Math.random() to pick
-
-// your code goes here
+var index = Math.floor(4 * Math.random());
+nextAnimal = favoriteAnimals[index];
 
 assert(nextAnimal, 'assign something to nextAnimal');
 
@@ -124,21 +135,21 @@ assert(nextAnimal, 'assign something to nextAnimal');
 // don't require quotes for the code to work. Remove the unnecessary quotes.
 
 var animalExhibitStats = {
-  'numberOpen': 13,
+   numberOpen: 13,
   'number closed': 2,
   'petting-zoo-open': true,
-  'mostPopular': 'Lucky the Emperor Penguin',
+   mostPopular: 'Lucky the Emperor Penguin',
   '2ndMostPopular': 'Dumbo the Depressed Donkey'
 };
 
-/*
+/*s
  TODO: 4 points
  The animalExhibitStats object is indexed four times below using bracket
  notation. WITHOUT changing any of the property names, replace the bracket
  notation with dot notation wherever possible.
 */
 
-assert(animalExhibitStats['numberOpen'] === 13, 'there should be 13 open exhibits');
+assert(animalExhibitStats.numberOpen === 13, 'there should be 13 open exhibits');
 assert(animalExhibitStats['number closed'] === 2, 'there should be 2 closed exhibits');
 assert(animalExhibitStats['petting-zoo-open'], 'hey! =( i was promised meerkats!');
 assert(animalExhibitStats['2ndMostPopular'] === 'Dumbo the Depressed Donkey',
@@ -148,6 +159,8 @@ assert(animalExhibitStats['2ndMostPopular'] === 'Dumbo the Depressed Donkey',
 // Write an assert about the 'mostPopular' property of animalExibitStats.
 // Use the above examples to guide you.
 
+assert(animalExhibitStats.mostPopular === 'Lucky the Emperor Penguin',
+  'The most popular animal in the zoo is Lucky');
 // your assert goes here
 
 /* ==================================================================
@@ -167,3 +180,6 @@ assert(animalExhibitStats['2ndMostPopular'] === 'Dumbo the Depressed Donkey',
  Error and warning descriptions will be printed in the terminal.
  To get full points, correct all of the errors/warnings.
 */
+
+
+// Collaborators/sources: I used the MDN as a reference for Math.random()
